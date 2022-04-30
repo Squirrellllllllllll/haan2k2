@@ -89,6 +89,7 @@ class UsersClass:
        btn_update=Button(self.root,text="Update",command=self.update,font=("goudy old style",15),bg="#4caf50",fg="white",cursor="hand2").place(x=620,y=305,width=110,height=28)
        btn_delete=Button(self.root,text="Delete",command=self.delete,font=("goudy old style",15),bg="#f44336",fg="white",cursor="hand2").place(x=740,y=305,width=110,height=28)
        btn_clear=Button(self.root,text="Clear",command=self.clear,font=("goudy old style",15),bg="#607d8b",fg="white",cursor="hand2").place(x=860,y=305,width=110,height=28)
+       btn_logout=Button(self.root,text="Logout",command=self.logout,font=("goudy old style",15),bg="#856ff8",fg="white",cursor="hand2").place(x=980,y=305,width=110,height=28)
 
        #====Users Detail====
        users_frame=Frame(self.root,bd=3,relief=RIDGE)
@@ -157,7 +158,7 @@ class UsersClass:
 
                                         self.var_pass.get(),
                                         self.var_utype.get(),
-                                        self.txt_address.get('1.0',END),
+                                        self.txt_address.get('1.0', END),
                                         self.var_fees.get()
                     ))
                     con.commit()
@@ -268,7 +269,7 @@ class UsersClass:
 
         self.var_pass.set(""),
         self.var_utype.set("Package 1"),
-        self.txt_address.insert('1.0',END),
+        self.txt_address.insert(""),
         self.var_fees.set("")
         self.var_searchtxt.set("")
         self.var_searchby.set("Select")
@@ -296,7 +297,23 @@ class UsersClass:
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}",parent=self.root)
 
+    def logout(self):
+        self.var_user_id.set(""),
+        self.var_name.set(""),
+        self.var_email.set(""),
+        self.var_gender.set("Select"),
+        self.var_phoneNumber.set(""),
 
+        self.var_dob.set(""),
+        self.var_dor.set(""),
+
+        self.var_pass.set(""),
+        self.var_utype.set("Package 1"),
+        self.txt_address.insert(""),
+        self.var_fees.set("")
+        self.var_searchtxt.set("")
+        self.var_searchby.set("Select")
+        self.show()
 
 if __name__=="__main__":
     root = Tk()
